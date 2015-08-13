@@ -1,0 +1,27 @@
+{
+  "name": "hackntu_back-end",
+  "version": "1.0.0",
+  "description": "HackNTU Back-end",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickson-makotoki/HackNTU-Back-end.git"
+  },
+  "keywords": [
+    "open",
+    "source",
+    "hackathon"
+  ],
+  "author": "Erickson Juang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erickson-makotoki/HackNTU-Back-end/issues"
+  },
+  "homepage": "https://github.com/erickson-makotoki/HackNTU-Back-end#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
