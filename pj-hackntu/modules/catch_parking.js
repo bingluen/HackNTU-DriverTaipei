@@ -42,17 +42,11 @@ Parking.prototype.catching = function(next) {
       // 刪除無用的欄位
       var parkingData = results['parkingData'].map(function(currentValue) {
         var obj = {}
+        var latlng = CoordinateTransforms.TW97_WGS84(currentValue.tw97x, currentValue.tw97y)
         obj.id = currentValue.id;
-        obj.area = currentValue.area;
         obj.name = currentValue.name;
-        obj.summary = currentValue.summary;
-        obj.address = currentValue.address;
-        obj.tel = currentValue.tel;
-        obj.payex = currentValue.payex;
-        obj.serviceTime = currentValue.serviceTime
-        obj.totalCar = currentValue.totalCar;
-        obj.totalBike = currentValue.totalBike;
-        obj.latlng = CoordinateTransforms.TW97_WGS84(currentValue.tw97x, currentValue.tw97y);
+        obj.lat = latlng.y;
+        obj.lng = latlng.x;
         return obj;
       });
 
