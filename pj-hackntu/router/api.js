@@ -51,7 +51,7 @@ router.get('/construct', function(req, res, next) {
 
 router.get('/pbs', function(req, res, next) {
   var pbsData = new Pbs();
-  pbsData.catch(function(err, data) {
+  pbsData.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
       errorhandle.do();
