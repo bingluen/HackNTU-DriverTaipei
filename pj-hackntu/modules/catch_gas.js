@@ -12,7 +12,6 @@ gas.prototype.catching = function(next) {
     var gasData = data.map(function(currentValue) {
       var obj = {}
       var latlng = CoordinateTransforms.TW97_WGS84(currentValue.ADDR_X, currentValue.ADDR_Y);
-      console.log(latlng);
       obj.id = currentValue._id;
       obj.name = currentValue.NAME + ' ' + currentValue.S_NAME;
       obj.lat = latlng.y;
