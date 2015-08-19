@@ -3,8 +3,9 @@ var router = express.Router();
 var ErrorHandle = require('../modules/error_handle');
 
 
-var Parking = require('../modules/catch_parking')
-var Gas = require('../modules/catch_gas')
+var Parking = require('../modules/catch_parking');
+var Gas = require('../modules/catch_gas');
+var Construct = require('../modules/catch_construct');
 
 //parking sapce
 router.get('/parking', function(req, res, next) {
@@ -26,12 +27,25 @@ router.get('/gas', function(req, res, next) {
   var gasData = new Gas();
   gasData.catching(function(err, data) {
     if(err) {
-      var errorhandle = new errorhandle(err);
-      errorHandle.do();
+      var errorhandle = new ErrorHandle(err);
+      errorhandle.do();
     } else {
       res.status(200).json(data);
     }
   })
+});
+
+//construct
+router.get('/construct', function(req, res, next) {
+  var constructData = new Construct();
+  constructData.catching(function(err, data) {
+    if(err) {
+      var errorhandle = new ErrorHandle(err);
+      errorhandle.do();
+    } else {
+      res.status(200).json(data);
+    }
+  });
 })
 
 module.exports = router;
