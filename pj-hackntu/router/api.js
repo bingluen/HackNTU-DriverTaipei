@@ -43,7 +43,7 @@ router.get('/construct', function(req, res, next) {
       var errorhandle = new ErrorHandle(err);
       errorhandle.do();
     } else {
-      res.status(200).json(data);g
+      res.status(200).json(data);
     }
   });
 })
