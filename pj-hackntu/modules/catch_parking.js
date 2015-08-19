@@ -1,6 +1,5 @@
 var request = require('request');
 var async = require('async');
-var ErrorHandle = require('./error_handle');
 var CoordinateTransforms = require('../helper/CoordinateTransform');
 
 var Parking = function() {
