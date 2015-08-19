@@ -45,6 +45,7 @@ Parking.prototype.catching = function(next) {
         obj.name = currentValue.name;
         obj.lat = latlng.y;
         obj.lng = latlng.x;
+        obj.payDes = currentValue.payex;
         return obj;
       });
 
@@ -67,6 +68,11 @@ Parking.prototype.catching = function(next) {
           parkingData[i].availableMotor = 0;
         }
       }
+
+      // filte data (delete data which availableParking = zero)
+      parkingData = parkingData.filter(function(element) {
+        return (element.availableCar + element.availableMotor > 0);
+      });
 
 
       next(null, parkingData);
