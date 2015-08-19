@@ -60,11 +60,11 @@ Parking.prototype.catching = function(next) {
       // merge available parking space by loop
       for(var i = 0; i < parkingData.length; i ++) {
         if(availableParking[parkingData[i].id]) {
-          parkingData[i].availableCar = availableParking[parkingData[i].id].availableCar || 'null';
-          parkingData[i].availableMotor = availableParking[parkingData[i].id].availableMotor || 'null';
+          parkingData[i].availableCar = availableParking[parkingData[i].id].availableCar || 0;
+          parkingData[i].availableMotor = availableParking[parkingData[i].id].availableMotor || 0;
         } else {
-          parkingData[i].availableCar = 'null';
-          parkingData[i].availableMotor = 'null';
+          parkingData[i].availableCar = 0;
+          parkingData[i].availableMotor = 0;
         }
       }
 
