@@ -3,7 +3,7 @@
 var http = require('http');
 
 var pj_hackntu = require('./pj_hackntu');
-var port = normalizePort('8080');
+var port = normalizePort('80');
 pj_hackntu.set('port', port);
 
 /**
