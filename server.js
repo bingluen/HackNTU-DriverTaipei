@@ -3,8 +3,7 @@
 var http = require('http');
 
 var pj_hackntu = require('./pj_hackntu');
-var port = normalizePort(process.env.OPENSHIFT_NODEJS_PORT  || '8080');
-var ip_address = process.env.OPENSHIFT_NODEJS_IP
+var port = normalizePort('8080');
 pj_hackntu.set('port', port);
 
 /**
@@ -12,7 +11,7 @@ pj_hackntu.set('port', port);
  */
 var server = http.createServer(pj_hackntu);
 
-server.listen(port, ip_address);
+server.listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);
