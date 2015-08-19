@@ -16,7 +16,7 @@ gas.prototype.catching = function(next) {
       obj.name = currentValue.NAME + ' ' + currentValue.S_NAME;
       obj.lat = latlng.y;
       obj.lng = latlng.x;
-      obj.hasOill = currentValue.HAVEOIL == 'Y' ? true : false;
+      obj.hasOil = currentValue.HAVEOIL == 'Y' ? true : false;
       obj.hasSelf = currentValue.HAVESELF == 'Y' ? true : false;
       obj.hasGas = currentValue.NAME.match('加氣') == null ? false : true;
       obj.serviceTime = timeTransfrom(currentValue.DUTY_TIME);
