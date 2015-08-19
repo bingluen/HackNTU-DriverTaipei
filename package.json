@@ -24,6 +24,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "express": "^4.13.3",
+    "moment": "^2.10.6",
     "proj4": "^2.3.7",
     "request": "^2.60.0"
   }
