@@ -14,7 +14,6 @@ Parking.prototype.catching = function(next) {
 
   async.parallel({
     parkingData: function(callback) {
-      console.log('catching parking');
       request(this.url.parking, function(err, res, body) {
         if(!err && res.statusCode == 200) {
           callback(null, JSON.parse(body).result.results);
@@ -26,7 +25,6 @@ Parking.prototype.catching = function(next) {
 
 
     availableSpace: function(callback) {
-      console.log('catching available space');
       request(this.url.available, function(err, res, body) {
         if(!err && res.statusCode == 200) {
           callback(null, JSON.parse(body).result.results);

@@ -3,9 +3,12 @@ var express = require('express');
 
 /* Project module */
 var ErrorHandle = require('./pj-hackntu/modules/error_handle');
+var API = require('./pj-hackntu/router/api.js')
 
 /* setting app */
 var app = express();
+
+app.use('/api', API);
 
 
 
