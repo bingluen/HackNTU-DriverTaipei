@@ -15,7 +15,16 @@ Parking.prototype.catching = function(next) {
   async.parallel({
     parkingData: function(callback) {
       request(this.url.parking, function(err, res, body) {
-        if(!err && res.statusCode == 200) {
+        if (body.length <= 0) {
+
+          var err = {
+            message: 'Cant\'t catch data.',
+            statusCode: 500
+          }
+
+          callback(err)
+
+        } else if(!err && res.statusCode == 200) {
           callback(null, JSON.parse(body).result.results);
         } else {
           callback(err)
@@ -26,7 +35,16 @@ Parking.prototype.catching = function(next) {
 
     availableSpace: function(callback) {
       request(this.url.available, function(err, res, body) {
-        if(!err && res.statusCode == 200) {
+        if (body.length <= 0) {
+
+          var err = {
+            message: 'Cant\'t catch data.',
+            statusCode: 500
+          }
+
+          callback(err);
+
+        } else if(!err && res.statusCode == 200) {
           callback(null, JSON.parse(body).result.results);
         } else {
           callback(err)
