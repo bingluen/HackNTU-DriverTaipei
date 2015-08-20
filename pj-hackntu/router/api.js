@@ -49,6 +49,7 @@ router.get('/construct', function(req, res, next) {
   });
 })
 
+//PBS
 router.get('/pbs', function(req, res, next) {
   var pbsData = new Pbs();
   pbsData.catching(function(err, data) {
@@ -58,7 +59,20 @@ router.get('/pbs', function(req, res, next) {
     } else {
       res.status(200).json(data);
     }
-  })
-})
+  });
+});
+
+//VD
+router.get('/vd', function(req, res, next) {
+  var VD = new catch_vd();
+  VD.catching(function(err, data) {
+    if(err) {
+      var errorhandle = new ErrorHandle(err);
+      errorhandle.do();
+    } else {
+      res.status(200).json(data);
+    }
+  });
+});
 
 module.exports = router;
