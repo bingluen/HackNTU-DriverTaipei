@@ -8,6 +8,11 @@ var CoordinateTransforms = {
     var PointSource = new Proj4.toPoint(new Array(x, y));
     var PointDest = Proj4.transform(this.Proj_TW97, this.Proj_WGS84, PointSource);
     return PointDest;
+  },
+  WGS84_TW97: function(x, y) {
+    var PointSource = new Proj4.toPoint(new Array(x, y));
+    var PointDest = Proj4.transform(this.Proj_WGS84, this.Proj_TW97, PointSource);
+    return PointDest;
   }
 }
 
