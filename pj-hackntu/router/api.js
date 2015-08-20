@@ -14,7 +14,7 @@ router.get('/parking', function(req, res, next) {
   parkingData.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
-      errorhandle.do();
+      errorhandle.do(req, res);
       return
     } else {
       res.status(200).json(data);
@@ -29,7 +29,7 @@ router.get('/gas', function(req, res, next) {
   gasData.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
-      errorhandle.do();
+      errorhandle.do(req, res);
     } else {
       res.status(200).json(data);
     }
@@ -42,7 +42,7 @@ router.get('/construct', function(req, res, next) {
   constructData.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
-      errorhandle.do();
+      errorhandle.do(req, res);
     } else {
       res.status(200).json(data);
     }
@@ -55,7 +55,7 @@ router.get('/pbs', function(req, res, next) {
   pbsData.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
-      errorhandle.do();
+      errorhandle.do(req, res);
     } else {
       res.status(200).json(data);
     }
@@ -68,7 +68,7 @@ router.get('/vd', function(req, res, next) {
   VD.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
-      errorhandle.do();
+      errorhandle.do(req, res);
     } else {
       res.status(200).json(data);
     }
