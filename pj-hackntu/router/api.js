@@ -65,8 +65,8 @@ router.get('/pbs', function(req, res, next) {
 
 //VD
 router.get('/vd', function(req, res, next) {
-  var VD = new VD();
-  VD.catching(function(err, data) {
+  var vd = new VD();
+  vd.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
       errorhandle.do(req, res);
