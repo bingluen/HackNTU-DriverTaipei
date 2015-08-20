@@ -7,6 +7,7 @@ var Parking = require('../modules/catch_parking');
 var Gas = require('../modules/catch_gas');
 var Construct = require('../modules/catch_construct');
 var Pbs = require('../modules/catch_pbs');
+var VD = require('../modules/catch_vd');
 
 //parking sapce
 router.get('/parking', function(req, res, next) {
@@ -64,7 +65,7 @@ router.get('/pbs', function(req, res, next) {
 
 //VD
 router.get('/vd', function(req, res, next) {
-  var VD = new catch_vd();
+  var VD = new VD();
   VD.catching(function(err, data) {
     if(err) {
       var errorhandle = new ErrorHandle(err);
