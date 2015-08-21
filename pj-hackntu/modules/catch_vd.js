@@ -1,16 +1,27 @@
 var request = require('request');
 var CoordinateTransforms = require('../helper/CoordinateTransform');
+var moment = require('moment');
+var fs = require('fs-extra');
+var path = require('path');
+
 
 var VD = function() {
   this.url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=5aacba65-afda-4ad5-88f5-6026934140e6"
+  this.logfile = fs.createOutputStream(path.join(__dirname, '../log', moment().format('YYYY-MM-DD-h-mm-ss-') + 'log_pbs.log'));
 }
+
+VD.prototype.writeLogfile = function (messages, type) {
+
+  this.logfile.write('[' + Date(Date.now()).toString() + ']' + (type ? '['+ type +']' : '') + messages + '\n');
+
+};
 
 VD.prototype.catching = function(callback) {
   var getSpeedLevel = function(value) {
     value = parseInt(value);
     if(value < 20) {
       return 'low'
-    } else if (value > 50) {
+    } else if (value > 40) {
       return 'fast'
     } else {
       return 'medium'
