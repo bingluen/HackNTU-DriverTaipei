@@ -29,7 +29,7 @@ PBS.prototype.catching = function(next) {
       obj.lat = currentValue.y1;
       obj.lng = currentValue.x1;
       var dt = moment(currentValue.happendate+'T'+currentValue.happentime);
-      obj.dt = dt.format('MM/DD hh:mm:ss')
+      obj.dt = dt.format('MM/DD hh時mm分')
       return obj;
     });
     this.writeLogfile('send pbs data');
