@@ -3,6 +3,7 @@ var async = require('async');
 var CoordinateTransforms = require('../helper/CoordinateTransform');
 var fs = require('fs-extra');
 var path = require('path');
+var moment = require('moment');
 
 var logfileName = 'log_parking.log';
 
@@ -12,16 +13,13 @@ var Parking = function() {
     parking: "http://data.taipei.gov.tw/opendata/apply/query/QzhBMEJFOTctMEEzRC00M0Q2LThDNDktNDVCNDc3NDNDRDBC?$format=json",
     available: "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=9ba187c9-b07e-40bc-9aa5-8d3c9f1aad63"
   };
+  this.logfile = fs.createOutputStream(path.join(__dirname, '../log', moment().format('YYYY-MM-DD-h-mm-ss-') + logfileName));
 }
 
 Parking.prototype.writeLogfile = function (messages, type) {
-  fs.outputFile(path.join(__dirname, '../log', logfileName),
-    '[' + Date(Date.now()).toString() + ']' + (type ? '['+ type +']' : '') + messages,
-    function(err) {
-      if(err) {
-          console.log(err); //null
-      }
-  });
+
+  this.logfile.write('[' + Date(Date.now()).toString() + ']' + (type ? '['+ type +']' : '') + messages + '\n');
+
 };
 
 
