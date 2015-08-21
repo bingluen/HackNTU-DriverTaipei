@@ -19,7 +19,7 @@ PBS.prototype.catching = function(next) {
   var filter = function(data) {
     this.writeLogfile('catched pbs data');
     data = data.filter(function(element) {
-      return (element.region == 'N' && parseInt(element.x1) > 0 && parseInt(element.y1) > 0 && element.roadtype != '其他')
+      return (element.region == 'N' && parseInt(element.x1) > 0 && parseInt(element.y1) > 0 && element.roadtype != '其他' && !element.comment.match('已排除'))
     });
 
     data = data.map(function(currentValue) {
@@ -28,8 +28,6 @@ PBS.prototype.catching = function(next) {
       obj.status = currentValue.roadtype;
       obj.lat = currentValue.y1;
       obj.lng = currentValue.x1;
-      var dt = moment(currentValue.happendate+'T'+currentValue.happentime);
-      obj.dt = dt.format('MM/DD hh時mm分')
       return obj;
     });
     this.writeLogfile('send pbs data');
