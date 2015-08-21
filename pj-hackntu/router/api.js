@@ -1,24 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var ErrorHandle = require('../modules/error_handle');
+var fs = require('fs-extra');
+var path = require('path');
 
+var filePath = {
+  parking: path.join(__dirname, '../database', 'parking.json'),
+  gas: path.join(__dirname, '../database', 'gas.json'),
+  construct: path.join(__dirname, '../database', 'construct.json'),
+  pbs: path.join(__dirname, '../database', 'pbs.json'),
+}
 
-var Parking = require('../modules/catch_parking');
-var Gas = require('../modules/catch_gas');
-var Construct = require('../modules/catch_construct');
-var Pbs = require('../modules/catch_pbs');
-var VD = require('../modules/catch_vd');
 
 //parking sapce
 router.get('/parking', function(req, res, next) {
-  var parkingData = new Parking();
-  parkingData.catching(function(err, data) {
+  fs.readJSON(filePath.parking, function(err, packageObj) {
     if(err) {
-      var errorhandle = new ErrorHandle(err, 'json');
-      errorhandle.do(req, res);
-      return
+      res.status(500).json({
+        err: 'fail to getting data',
+        statusCode: 500
+      })
     } else {
-      res.status(200).json(data);
+      res.status(200).json(packageObj);
     }
   })
 });
@@ -26,57 +29,44 @@ router.get('/parking', function(req, res, next) {
 
 //gas station
 router.get('/gas', function(req, res, next) {
-  var gasData = new Gas();
-  gasData.catching(function(err, data) {
+  fs.readJSON(filePath.gas, function(err, packageObj) {
     if(err) {
-      var errorhandle = new ErrorHandle(err, 'json');
-      errorhandle.do(req, res);
+      res.status(500).json({
+        err: 'fail to getting data',
+        statusCode: 500
+      })
     } else {
-      res.status(200).json(data);
+      res.status(200).json(packageObj);
     }
   })
 });
 
 //construct
 router.get('/construct', function(req, res, next) {
-  var constructData = new Construct();
-  constructData.catching(function(err, data) {
+  fs.readJSON(filePath.construct, function(err, packageObj) {
     if(err) {
-      var errorhandle = new ErrorHandle(err, 'json');
-      errorhandle.do(req, res);
+      res.status(500).json({
+        err: 'fail to getting data',
+        statusCode: 500
+      })
     } else {
-      res.status(200).json(data);
+      res.status(200).json(packageObj);
     }
-  });
+  })
 })
 
 //PBS
 router.get('/pbs', function(req, res, next) {
-  var pbsData = new Pbs();
-  pbsData.catching(function(err, data) {
+  fs.readJSON(filePath.pbs, function(err, packageObj) {
     if(err) {
-      var errorhandle = new ErrorHandle(err, 'json');
-      errorhandle.do(req, res);
-    } else {
-      res.status(200).json(data);
-    }
-  });
-});
-
-//VD
-router.get('/vd', function(req, res, next) {
-  var vd = new VD();
-  vd.catching(function(err, data) {
-    if(err) {
-      var errorhandle = new ErrorHandle({
-        message: err.errno,
+      res.status(500).json({
+        err: 'fail to getting data',
         statusCode: 500
-      }, 'json');
-      errorhandle.do(req, res);
+      })
     } else {
-      res.status(200).json(data);
+      res.status(200).json(packageObj);
     }
-  });
+  })
 });
 
 module.exports = router;

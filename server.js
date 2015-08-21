@@ -3,6 +3,20 @@
 var http = require('http');
 
 var pj_hackntu = require('./pj_hackntu');
+
+var APICatcher = require('./pj-hackntu/APICatcher');
+
+
+/**
+ * Create Api Catcher
+ */
+
+APICatcher();
+
+/**
+ * Setting Http server port
+ */
+
 var port = normalizePort('80');
 pj_hackntu.set('port', port);
 
@@ -17,7 +31,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 server.on('connection', function(socket) {
   console.log("A new connection was made by a client.");
-  socket.setTimeout(0); 
+  socket.setTimeout(0);
   // 30 second timeout. Change this as you see fit.
 })
 
