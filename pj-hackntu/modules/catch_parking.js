@@ -49,7 +49,6 @@ Parking.prototype.catching = function(next) {
   },
 
   function(err, results) {
-    console.log(results);
     if(!err) {
       // 刪除無用的欄位
       var parkingData = results['parkingData'].map(function(currentValue) {
