@@ -15,6 +15,11 @@ server.listen(port);
 
 server.on('error', onError);
 server.on('listening', onListening);
+server.on('connection', function(socket) {
+  console.log("A new connection was made by a client.");
+  socket.setTimeout(0); 
+  // 30 second timeout. Change this as you see fit.
+})
 
 /**
  * Normalize a port into a number, string, or false.
