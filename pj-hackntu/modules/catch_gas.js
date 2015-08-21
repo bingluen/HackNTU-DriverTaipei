@@ -13,7 +13,7 @@ gas.prototype.catching = function(next) {
       var obj = {}
       var latlng = CoordinateTransforms.TW97_WGS84(currentValue.ADDR_X, currentValue.ADDR_Y);
       obj.id = currentValue._id;
-      obj.name = currentValue.NAME + ' ' + currentValue.S_NAME;
+      obj.name = currentValue.NAME;
       obj.lat = latlng.y;
       obj.lng = latlng.x;
       obj.hasOil = currentValue.HAVEOIL == 'Y' ? true : false;
