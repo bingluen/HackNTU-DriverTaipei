@@ -36,7 +36,7 @@ gas.prototype.catching = function(next) {
     });
     this.writeLogfile('send gas data');
     next(null, gasData);
-  }
+  }.bind(this);
 
   var timeTransfrom = function(timeString) {
     if ( typeof timeString != 'string' ) {
