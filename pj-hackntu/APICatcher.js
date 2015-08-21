@@ -39,7 +39,7 @@ var APICatcher = function() {
     parking: function() {
       parkingData.catching(function(err, data) {
         if (!err) {
-          data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
+          //data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
           fs.outputJSON(filePath.parking, data, function(err) {
             writeLogfile(err, 'fail to write parking data to json file.')
           })
@@ -52,7 +52,7 @@ var APICatcher = function() {
     gas: function() {
       gasData.catching(function(err, data) {
         if (!err) {
-          data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
+          //data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
           fs.outputJSON(filePath.gas, data, function(err) {
             writeLogfile(err, 'fail to write gas data to json file.')
           })
@@ -65,7 +65,7 @@ var APICatcher = function() {
     construct: function () {
       constructData.catching(function(err, data) {
         if (!err) {
-          data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
+          //data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
           fs.outputJSON(filePath.construct, data, function(err) {
             writeLogfile(err, 'fail to write construct data to json file.')
           })
@@ -78,7 +78,7 @@ var APICatcher = function() {
     pbs: function() {
       pbsData.catching(function(err, data) {
         if (!err) {
-          data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
+          //data.updateTime = moment().format('yyyy-MM-dd hh-mm-ss');
           fs.outputJSON(filePath.pbs, data, function(err) {
             writeLogfile(err, 'fail to write pbs data to json file.')
           })
